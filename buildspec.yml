@@ -5,11 +5,11 @@ phases:
     runtime-versions:
       nodejs: 18
     commands:
-      - npm install
+      - npm ci
   build:
     commands:
       - npm run build
 artifacts:
-  base-directory: build
   files:
     - '**/*'
+  base-directory: build
