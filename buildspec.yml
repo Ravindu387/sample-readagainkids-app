@@ -22,10 +22,9 @@ phases:
       - echo Build completed successfully!
 
 artifacts:
+  base-directory: dist
   files:
-    - '/*'      # Include all files from the build directory
-  base-directory: dist  # Output directory for build artifacts
-
+    - '**/*'
 cache:
   paths:
     - 'node_modules//*'  # Cache node_modules for faster builds
