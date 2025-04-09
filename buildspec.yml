@@ -3,13 +3,29 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 18
+      nodejs: 22
     commands:
-      - npm ci
+      - echo Installing dependencies...
+      - npm install  # Installs project dependencies
+
+  pre_build:
+    commands:
+      - echo Running pre-build steps...
+
   build:
     commands:
-      - npm run build
+      - echo Building the React app...
+      - npm run build  # Builds the React app into the build directory
+
+  post_build:
+    commands:
+      - echo Build completed successfully!
+
 artifacts:
   files:
-    - '**/*'
-  base-directory: dist
+    - '/*'      # Include all files from the build directory
+  base-directory: dist  # Output directory for build artifacts
+
+cache:
+  paths:
+    - 'node_modules//*'  # Cache node_modules for faster builds
